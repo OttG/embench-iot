@@ -1,0 +1,48 @@
+diff --git a/corev_apu/bootrom/bootrom.S b/corev_apu/bootrom/bootrom.S
+index e80d959d..6aa3212a 100644
+--- a/corev_apu/bootrom/bootrom.S
++++ b/corev_apu/bootrom/bootrom.S
+@@ -7,6 +7,7 @@ _start:
+ # to generates code compatible with both versions.
+   li s0, 1
+   slli s0, s0, 31
++  addi s0, s0, 0x80
+   csrr a0, mhartid
+   la a1, _dtb
+   jr s0
+diff --git a/corev_apu/tb/ariane_tb.sv b/corev_apu/tb/ariane_tb.sv
+index ac13b7f6..68d83a51 100644
+--- a/corev_apu/tb/ariane_tb.sv
++++ b/corev_apu/tb/ariane_tb.sv
+@@ -102,7 +102,17 @@ module ariane_tb;
+         end
+     end
+
+-    initial begin
++   initial begin
++      forever begin
++         @(negedge clk_i);
++         if(`MAIN_MEM(20'h40000 >> 3) != 0) begin
++            $display("The value returned is %x", `MAIN_MEM(20'h40000 >> 3));
++            $finish();
++         end
++      end
++   end
++
++   initial begin
+         forever begin
+
+             wait (exit_o[0]);
+diff --git a/corev_apu/tb/ariane_testharness.sv b/corev_apu/tb/ariane_testharness.sv
+index 965af63c..dff30a23 100644
+--- a/corev_apu/tb/ariane_testharness.sv
++++ b/corev_apu/tb/ariane_testharness.sv
+@@ -702,7 +702,7 @@ module ariane_testharness #(
+ `ifdef SPIKE_TANDEM
+     .debug_req_i          ( 1'b0                ),
+ `else
+-    .debug_req_i          ( debug_req_core      ),
++    .debug_req_i          ( 1'b0      ),
+ `endif
+     .axi_req_o            ( axi_ariane_req      ),
+     .axi_resp_i           ( axi_ariane_resp     )

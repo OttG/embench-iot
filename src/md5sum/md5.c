@@ -14,7 +14,7 @@
 
 #include "support.h"
 
-#define LOCAL_SCALE_FACTOR 51
+#define LOCAL_SCALE_FACTOR 1
 
 /* BEEBS heap is just an array */
 #define HEAP_SIZE 2000
