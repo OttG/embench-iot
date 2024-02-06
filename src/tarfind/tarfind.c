@@ -12,7 +12,7 @@
 
 #include "support.h"
 
-#define LOCAL_SCALE_FACTOR 47
+#define LOCAL_SCALE_FACTOR  1
 
 // number of files in the archive
 #define ARCHIVE_FILES 35

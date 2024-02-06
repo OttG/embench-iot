@@ -61,7 +61,7 @@
 
 #include "support.h"
 
-#define LOCAL_SCALE_FACTOR 1
+#define LOCAL_SCALE_FACTOR  1
 
 #define PI 3.141592653589793
 #define SOLAR_MASS ( 4 * PI * PI )

@@ -91,7 +91,7 @@
 
 #include "support.h"
 
-#define LOCAL_SCALE_FACTOR 1
+#define LOCAL_SCALE_FACTOR  1
 
 #include <stdio.h>
 #include <time.h>
