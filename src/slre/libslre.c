@@ -18,7 +18,7 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR  1
+#define LOCAL_SCALE_FACTOR  46
 
 #include <stdio.h>
 #include <ctype.h>
