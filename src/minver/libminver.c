@@ -61,7 +61,8 @@
 
 /* This scale factor will be changed to equalise the runtime of the
    benchmarks. */
-#define LOCAL_SCALE_FACTOR  2169
+#define LOCAL_SCALE_FACTOR  2000
+// #define LOCAL_SCALE_FACTOR  1
 
 int minver (int row, int col, float eps);
 int mmul (int row_a, int col_a, int row_b, int col_b);
